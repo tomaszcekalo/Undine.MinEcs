@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>ecs, reactive, patterns, ioc, view-separation, xna, game-development, unity, monogame, gamedev, games, ecs, c-sharp, entity-component, entity-framework, entity, entity-component-system, tdd, test-driven-development, performance, design-pattern, paradigmshift, paradigm, design-patterns, game, game-engine, scripts, scripting, data-driven, data, driven, min, undine</PackageTags>
+    <Authors>Tomasz Cekało</Authors>
+    <Description>minECS binding for Undine Game Engine</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/tomaszcekalo/Undine.MinEcs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tomaszcekalo/Undine.MinEcs</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="minECS" Version="1.0.1" />
+    <PackageReference Include="Undine.Core" Version="0.0.0.1" />
+  </ItemGroup>
 
 </Project>
