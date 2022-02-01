@@ -20,9 +20,9 @@ namespace Undine.MinEcs
             _registry.AddComponent(_entity, component);
         }
 
-        public A GetComponent<A>() where A : struct
+        public ref A GetComponent<A>() where A : struct
         {
-            return _registry.GetComponent<A>((int)_entity);
+            return ref _registry.GetComponent<A>((int)_entity);
         }
     }
 }
