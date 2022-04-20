@@ -5,3 +5,4 @@
 
 # Undine.MinEcs
 minECS binding to UndineGameEngine
+[![CodeFactor](https://www.codefactor.io/repository/github/tomaszcekalo/Undine.MinEcs/badge)](https://www.codefactor.io/repository/github/tomaszcekalo/Undine.MinEcs)
