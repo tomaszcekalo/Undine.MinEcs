@@ -21,19 +21,20 @@ namespace Undine.MinEcs
             _registry = new EntityRegistry(1 << _preallocShift);
         }
 
-        protected void RegisterTypeIfNotRegistered<T>()
-            where T : struct
+        public override void RegisterComponentType<A>(Action<object, IUnifiedEntity> action = null)
+            where A : struct
         {
-            var type = typeof(T);
+            var type = typeof(A);
             if (!_registeredTypes.Contains(type))
             {
-                _registry.RegisterComponent<T>((BufferType)_bufferType, _preallocShift);
+                _registry.RegisterComponent<A>((BufferType)_bufferType, _preallocShift);
+                base.RegisterComponentType<A>(action);
             }
         }
 
         public override void AddSystem<A>(UnifiedSystem<A> system)
         {
-            RegisterTypeIfNotRegistered<A>();
+            RegisterComponentType<A>();
 
             _systems.Add(new MinSystem<A>
             {
@@ -44,8 +45,8 @@ namespace Undine.MinEcs
 
         public override void AddSystem<A, B>(UnifiedSystem<A, B> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
 
             _systems.Add(new MinSystem<A, B>
             {
@@ -56,9 +57,9 @@ namespace Undine.MinEcs
 
         public override void AddSystem<A, B, C>(UnifiedSystem<A, B, C> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
-            RegisterTypeIfNotRegistered<C>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
+            RegisterComponentType<C>();
 
             _systems.Add(new MinSystem<A, B, C>
             {
@@ -69,10 +70,10 @@ namespace Undine.MinEcs
 
         public override void AddSystem<A, B, C, D>(UnifiedSystem<A, B, C, D> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
-            RegisterTypeIfNotRegistered<C>();
-            RegisterTypeIfNotRegistered<D>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
+            RegisterComponentType<C>();
+            RegisterComponentType<D>();
 
             _systems.Add(new MinSystem<A, B, C, D>
             {
@@ -94,7 +95,7 @@ namespace Undine.MinEcs
 
         public override ISystem GetSystem<A>(UnifiedSystem<A> system)
         {
-            RegisterTypeIfNotRegistered<A>();
+            RegisterComponentType<A>();
             return new MinSystem<A>
             {
                 System = system,
@@ -104,8 +105,8 @@ namespace Undine.MinEcs
 
         public override ISystem GetSystem<A, B>(UnifiedSystem<A, B> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
             return new MinSystem<A, B>
             {
                 System = system,
@@ -115,9 +116,9 @@ namespace Undine.MinEcs
 
         public override ISystem GetSystem<A, B, C>(UnifiedSystem<A, B, C> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
-            RegisterTypeIfNotRegistered<C>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
+            RegisterComponentType<C>();
 
             return new MinSystem<A, B, C>
             {
@@ -128,10 +129,10 @@ namespace Undine.MinEcs
 
         public override ISystem GetSystem<A, B, C, D>(UnifiedSystem<A, B, C, D> system)
         {
-            RegisterTypeIfNotRegistered<A>();
-            RegisterTypeIfNotRegistered<B>();
-            RegisterTypeIfNotRegistered<C>();
-            RegisterTypeIfNotRegistered<D>();
+            RegisterComponentType<A>();
+            RegisterComponentType<B>();
+            RegisterComponentType<C>();
+            RegisterComponentType<D>();
 
             return new MinSystem<A, B, C, D>
             {
@@ -139,10 +140,5 @@ namespace Undine.MinEcs
                 Registry = _registry
             };
         }
-
-        //public override void AddSystem(IMinSystem system)
-        //{
-        //    _systems.Add(system);
-        //}
     }
 }
