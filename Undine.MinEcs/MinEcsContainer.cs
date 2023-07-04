@@ -12,9 +12,9 @@ namespace Undine.MinEcs
         private readonly EntityRegistry _registry;
         private readonly List<Type> _registeredTypes = new List<Type>();
         private readonly int _preallocShift;
-        public readonly int _bufferType;
+        public readonly BufferType _bufferType;
 
-        public MinEcsContainer(int preallocShift = 14, int bufferType = 1)
+        public MinEcsContainer(int preallocShift = 14, BufferType bufferType = BufferType.Sparse)
         {
             _preallocShift = preallocShift;
             _bufferType = bufferType;
@@ -27,7 +27,7 @@ namespace Undine.MinEcs
             var type = typeof(A);
             if (!_registeredTypes.Contains(type))
             {
-                _registry.RegisterComponent<A>((BufferType)_bufferType, _preallocShift);
+                _registry.RegisterComponent<A>(_bufferType, _preallocShift);
                 base.RegisterComponentType<A>(action);
             }
         }
