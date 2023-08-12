@@ -1,4 +1,4 @@
-using Moq;
+using NSubstitute;
 using Undine.Core;
 using Undine.MinEcs.Tests.Components;
 
@@ -16,8 +16,8 @@ namespace Undine.MinEcs.Tests
         public void ComponentCanBeAdded()
         {
             var container = new MinEcsContainer();
-            var mock = new Mock<UnifiedSystem<AComponent>>();
-            container.AddSystem(mock.Object);
+            var mock = Substitute.For<UnifiedSystem<AComponent>>();
+            container.AddSystem(mock);
             container.Init();
             var entity = container.CreateNewEntity();
             entity.AddComponent(new AComponent());
@@ -27,8 +27,8 @@ namespace Undine.MinEcs.Tests
         public void ComponentCanBeRetrieved()
         {
             var container = new MinEcsContainer();
-            var mock = new Mock<UnifiedSystem<AComponent>>();
-            container.AddSystem(mock.Object);
+            var mock = Substitute.For<UnifiedSystem<AComponent>>();
+            container.AddSystem(mock);
             container.Init();
             var entity = (MinEntity)container.CreateNewEntity();
             entity.AddComponent(new AComponent());
