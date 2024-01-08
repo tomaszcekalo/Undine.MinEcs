@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/tomaszcekalo/Undine.MinEcs</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tomaszcekalo/Undine.MinEcs</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="minECS" Version="1.0.1" />
-    <PackageReference Include="Undine.Core" Version="0.0.0.6" />
+    <PackageReference Include="Undine.Core" Version="0.0.1" />
   </ItemGroup>
 
 </Project>

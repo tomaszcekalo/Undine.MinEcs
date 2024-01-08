@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Undine.Core;
+using Undine.Core.Struct;
 using Undine.MinEcs;
+using Undine.MinEcs.Struct;
 
 Console.WriteLine("Hello, World!");
 var container = new MinEcsContainer();

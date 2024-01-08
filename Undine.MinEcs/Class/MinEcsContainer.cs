@@ -2,9 +2,11 @@
 using minECS.Registry;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Undine.Core;
+using Undine.Core.Class;
 
-namespace Undine.MinEcs
+namespace Undine.MinEcs.Class
 {
     public class MinEcsContainer : EcsContainer
     {
@@ -22,7 +24,7 @@ namespace Undine.MinEcs
         }
 
         public override void RegisterComponentType<A>(Action<object, IUnifiedEntity> action = null)
-            where A : struct
+            where A : class
         {
             var type = typeof(A);
             if (!_registeredTypes.Contains(type))

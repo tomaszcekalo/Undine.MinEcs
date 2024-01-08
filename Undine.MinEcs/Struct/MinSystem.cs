@@ -1,7 +1,8 @@
 ﻿using minECS.Registry;
 using Undine.Core;
+using Undine.Core.Struct;
 
-namespace Undine.MinEcs
+namespace Undine.MinEcs.Struct
 {
     public class MinSystem<T> : ISystem
         where T : struct

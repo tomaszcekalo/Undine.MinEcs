@@ -1,5 +1,7 @@
 using NSubstitute;
 using Undine.Core;
+using Undine.Core.Struct;
+using Undine.MinEcs.Struct;
 using Undine.MinEcs.Tests.Components;
 
 namespace Undine.MinEcs.Tests
