@@ -35,6 +35,20 @@ namespace Undine.MinEcs.Tests
 
             ref var component = ref entity.GetComponent<AComponent>();
             Assert.IsNotNull(component);
-        }//
+        }
+
+        [TestMethod]
+        public void ComponentCanBeRemoved()
+        {
+            var container = new MinEcsContainer();
+            var mock = Substitute.For<UnifiedSystem<AComponent>>();
+            container.AddSystem(mock);
+            container.Init();
+            var entity = (MinEntity)container.CreateNewEntity();
+            entity.AddComponent(new AComponent());
+
+            ref var component = ref entity.GetComponent<AComponent>();
+            entity.RemoveComponent<AComponent>();
+        }
     }
 }

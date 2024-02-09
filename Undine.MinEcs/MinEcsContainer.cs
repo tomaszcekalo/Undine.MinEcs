@@ -93,6 +93,16 @@ namespace Undine.MinEcs
             return new MinEntity(_registry);
         }
 
+        public override void DeleteEntity(IUnifiedEntity entity)
+        {
+            var entityToDelete = entity as MinEntity;
+
+            if(entityToDelete is not null)
+            {
+                _registry.DeleteEntity(entityToDelete.EntityId);
+            }
+        }
+
         public override ISystem GetSystem<A>(UnifiedSystem<A> system)
         {
             RegisterComponentType<A>();

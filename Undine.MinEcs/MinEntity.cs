@@ -6,23 +6,28 @@ namespace Undine.MinEcs
     public class MinEntity : IUnifiedEntity
     {
         private EntityRegistry _registry;
-        private ulong _entity;
+        public ulong EntityId { get; set; }
 
         public MinEntity(EntityRegistry registry)
         {
             _registry = registry;
-            _entity = registry.CreateEntity();
+            EntityId = registry.CreateEntity();
         }
 
         public void AddComponent<A>(in A component)
             where A : struct
         {
-            _registry.AddComponent(_entity, component);
+            _registry.AddComponent(EntityId, component);
         }
 
         public ref A GetComponent<A>() where A : struct
         {
-            return ref _registry.GetComponent<A>((int)_entity);
+            return ref _registry.GetComponent<A>((int)EntityId);
+        }
+
+        public void RemoveComponent<A>() where A : struct
+        {
+            _registry.RemoveComponent<A>(EntityId);
         }
     }
 }
